@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
+
+.typewriter-text {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+  text-align: center;
+  font-size: 1.75rem;
+
+  /* Default: dark font for light mode */
+  color: #222;
+
+  /* Shine effect */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(115, 140, 123, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shine 5s linear infinite;
+}
+
+/* ✅ Light font color when body is in dark mode */
+body.dark .typewriter-text {
+  color: #eee;
+}
+
+/* Shine animation */
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  background-color: currentColor;
+  width: 2px;
+  margin-left: 3px;
+  animation: blink 1s steps(1) infinite;
+  vertical-align: bottom;
+  height: 1.5em;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
