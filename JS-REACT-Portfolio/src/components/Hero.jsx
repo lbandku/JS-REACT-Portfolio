@@ -11,8 +11,10 @@ const Hero = () => {
       <h3>Website Designer | Software Developer | Tech Student</h3>
       <br />
       <a href="#projects-section">
-        <button type="button" className="button">View Projects</button>
+        <button type="button" className="button">Explore Projects</button>
       </a>
+      <br></br>
+      <br></br>
     </div>
   );
 };
