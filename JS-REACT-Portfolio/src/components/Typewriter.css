@@ -6,7 +6,9 @@
   font-weight: 600;
   overflow: hidden;
   text-align: center;
-  font-size: 1.75rem;
+
+  /* Mobile-first: smaller font size */
+  font-size: 1.3rem;
 
   /* Default: dark font for light mode */
   color: #222;
@@ -23,7 +25,7 @@
   animation: shine 5s linear infinite;
 }
 
-/* ✅ Light font color when body is in dark mode */
+/* Light font color when body is in dark mode */
 body.dark .typewriter-text {
   color: #eee;
 }
@@ -46,7 +48,9 @@ body.dark .typewriter-text {
   margin-left: 3px;
   animation: blink 1s steps(1) infinite;
   vertical-align: bottom;
-  height: 1.5em;
+
+  /* Mobile-first cursor height */
+  height: 1.2em;
 }
 
 @keyframes blink {
@@ -55,5 +59,38 @@ body.dark .typewriter-text {
   }
   50.01%, 100% {
     opacity: 0;
+  }
+}
+
+/* Medium screens and up */
+@media (min-width: 480px) {
+  .typewriter-text {
+    font-size: 1.5rem;
+  }
+
+  .cursor {
+    height: 1.35em;
+  }
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .typewriter-text {
+    font-size: 1.75rem;
+  }
+
+  .cursor {
+    height: 1.5em;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1024px) {
+  .typewriter-text {
+    font-size: 2rem;
+  }
+
+  .cursor {
+    height: 1.75em;
   }
 }
