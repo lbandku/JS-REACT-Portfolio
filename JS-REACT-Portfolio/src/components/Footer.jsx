@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div className="footer">
         <div className="social-media">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="http://www.linkedin.com/in/jacqueline-" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <i className="fab fa-linkedin" style={{ fontSize: '2rem', color: '#0A66C2' }}></i>
           </a>
         </div>

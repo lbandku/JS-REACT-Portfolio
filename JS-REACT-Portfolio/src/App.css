@@ -323,8 +323,81 @@ img {
     justify-content: space-between;
     align-items: center;
     width: 70%;
-    margin: 50px auto;
+    max-width: 600px;
+    margin: 30px auto;
 }
+
+
+.about-me {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.about h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+}
+
+.tech-icons {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tech-icons i {
+  font-size: 3.5rem;
+  color: inherit;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.tech-icons i:hover {
+  transform: scale(1.2);
+}
+
+.tech-icon span {
+  margin-top: 0.3rem;
+  font-size: 1rem;
+}
+
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  text-align: center;
+}
+
+.icon-group img {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+.icon-group p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--text-color);
+}
+
+.icon-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
 
 /* Projects Container */
 .container {
@@ -343,6 +416,15 @@ img {
         justify-content: center;
         gap: 30px; /* spacing between projects */
     }
+    
+    .icon-group img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-group p {
+    font-size: 1rem;
+  }
 }
 
 /* Each Project Column */
@@ -559,7 +641,7 @@ form h2 {
 .dark-light-toggle-fixed {
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 55px;
   z-index: 1100;
 }
 
@@ -599,6 +681,7 @@ form h2 {
 .copyright {
     text-align: center;
 }
+
 
 /* Typwriter Effect -- Blinking Cursor */
 #typewriter {
@@ -694,3 +777,11 @@ h1, h2, h3 {
     font-size: 1.2rem;
   }
 }
+
+
+
+
+
+
+
+
