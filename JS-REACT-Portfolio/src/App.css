@@ -1,787 +1,686 @@
-/*Main Page Styling */
+/* === Main Page Styling (updated) === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  transition: all 0.3s ease;
 }
 
 /* Main page formatting */
 main {
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 /* Headings */
-h1, h2, h3 {
-    text-align: center;
-    font-size: 2.4rem;
-}
+h1, h2, h3 { text-align: center; font-size: 2.4rem; }
+h4 { text-align: center; }
 
-h4 {
-    text-align: center;
-}
+/* Global Colors / Tokens */
+:root{
+  --body-color: rgb(215, 228, 217);
+  --nav-color: rgb(115, 120, 140);
+  --side-nav: rgb(1, 7, 24);
+  --text-color: rgb(255, 255, 255);
+  --search-bar: rgb(242, 242, 242);
+  --search-text: rgb(1, 7, 24);
+  --ring: rgba(2,6,23,.12);
+  --radius: 15px;
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 1.5px;
+  --sun-color: #facc15;   /* amber-400 */
 
-/* Global Colors */
-:root {
-    --body-color: rgb(215, 228, 217);
-    --nav-color: rgb(115, 120, 140);
-    --side-nav: rgb(1, 7, 24);
-    --text-color: rgb(255, 255, 255);
-    --search-bar: rgb(242, 242, 242);
-    --search-text: rgb(1, 7, 24);
-    --shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px, rgb(51, 51, 51) 0px 0px 0px 1.5px;
+
+  /* CTA buttons */
+  --btn: #0F172A;
+  --btn-hover: #1F2937;
+  --btn-text: #ffffff;
+
+  /* footer tweak */
+  --npower-nudge: 2px;
 }
 
 /* Light Mode */
-body {
-    height: 100vh;
-    background-color: var(--body-color);
-    font-size: 18px;
-    color: rgb(1, 7, 24); /* default text color for light mode */
+body{
+  height: 100vh;
+  background-color: var(--body-color);
+  font-size: 18px;
+  color: rgb(1, 7, 24);
 }
 
 /* Dark Mode Colors */
-body.dark {
-    --body-color: rgb(24, 25, 26);
-    --nav-color: rgb(36, 37, 38);
-    --side-nav: rgb(36, 37, 38);
-    color: rgb(255, 255, 255);
-    --search-bar: rgb(36, 37, 38);
+body.dark{
+  --body-color: rgb(24, 25, 26);
+  --nav-color: rgb(36, 37, 38);
+  --side-nav: rgb(36, 37, 38);
+  --search-bar: rgb(36, 37, 38);
+  --sun-color: #fde047;
+  color: rgb(255, 255, 255);
 }
 
 /* Navigation Bar */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 65px;
-    width: 100%;
-    background-color: var(--nav-color);
-    z-index: 1000;
+nav{
+  position: fixed; top: 0; left: 0; height: 65px; width: 100%;
+  background-color: var(--nav-color); z-index: 1000;
+}
+body.dark nav{ border: 1px solid rgb(57, 56, 56); }
+
+nav .nav-bar{
+  position: relative; height: 100%;
+  max-width: 1000px; width: 100%;
+  background-color: var(--nav-color);
+  margin: 0 auto; padding-left: 15px; padding-right: 30px;
+  display: flex; align-items: center; justify-content: space-between;
 }
 
-/* Dark Mode Nav Bar */
-body.dark nav {
-    border: 1px solid rgb(57, 56, 56);
+nav .nav-bar .sidebarOpen{
+  color: var(--text-color); font-size: 25px; padding: 5px; cursor: pointer; display: none;
 }
 
-nav .nav-bar {
-    position: relative;
-    height: 100%;
-    max-width: 1000px;
-    width: 100%;
-    background-color: var(--nav-color);
-    margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+nav .nav-bar .logo a{
+  font-size: 25px; font-weight: 500; color: var(--text-color); text-decoration: none;
 }
 
-nav .nav-bar .sidebarOpen {
-    color: var(--text-color);
-    font-size: 25px;
-    padding: 5px;
-    cursor: pointer;
-    display: none;
+
+
+nav .nav-bar .dark-light i.sun,
+.dark-light-toggle-fixed i.sun {
+  color: var(--sun-color) !important;
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.35);
 }
 
-nav .nav-bar .logo a {
-    font-size: 25px;
-    font-weight: 500;
-    color: var(--text-color);
-    text-decoration: none;
+/* Keep the moon a neutral light gray */
+nav .nav-bar .dark-light i.moon,
+.dark-light-toggle-fixed i.moon {
+  color: #e5e7eb;
 }
 
-.menu .logo-toggle {
-    display: none;
+
+
+.menu .logo-toggle{ display: none; }
+
+.nav-bar .nav-links{
+  display: flex; align-items: center; gap: 50px;
 }
 
-.nav-bar .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 50px;   /* space between the menu items */
+.nav-bar .nav-links li{ margin: 0 5px; list-style: none; }
+
+.nav-links li a{
+  position: relative; font-size: 20px; font-weight: 400; color: var(--text-color);
+  text-decoration: none; padding: 12px 15px; z-index: 10; display: block;
 }
 
-.nav-bar .nav-links li {
-    margin: 0 5px;
-    list-style: none;
-}
-
-.nav-links li a {
-    position: relative;
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 12px 15px;
-    z-index: 10;
-    display: block;
-}
-
-.nav-links li a::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
-    background-color: var(--text-color);
-    opacity: 0;
-    transition: all 0.3s ease;
+.nav-links li a::before{
+  content: ''; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+  height: 6px; width: 6px; border-radius: 50%; background-color: var(--text-color);
+  opacity: 0; transition: all 0.3s ease;
 }
 
 /* Dark/Light Toggle */
-.dark-light i,
-.searchToggle i {
-    position: absolute;
-    color: var(--text-color);
-    font-size: 22px;
-    cursor: pointer;
-    transition: opacity 0.4s ease;
+.dark-light i, .searchToggle i{
+  position: absolute; color: var(--text-color); font-size: 22px; cursor: pointer; transition: opacity 0.4s ease;
 }
+.dark-light i.sun{ opacity: 0; pointer-events: none; }
+.dark-light.active i.sun{ opacity: 1; pointer-events: auto; }
+.dark-light.active i.moon{ opacity: 0; pointer-events: none; }
+.dark-light i{ transition: transform 0.4s ease; }
+body.dark .dark-light .sun{ transform: rotate(360deg); }
+body.dark .dark-light .moon{ transform: rotate(360deg); }
 
-/* Sun Styling */
-.dark-light i.sun {
-    opacity: 0;
-    pointer-events: none;
+.searchToggle i.cancel{ opacity: 0; pointer-events: none; }
+
+/* Search Field */
+.searchBox .search-field{
+  position: absolute; bottom: -85px; right: 5px; height: 50px; width: 300px;
+  display: flex; align-items: center; background-color: var(--nav-color);
+  padding: 3px; border-radius: 6px; box-shadow: var(--shadow);
+  opacity: 0; pointer-events: none; transition: all 0.3s ease;
 }
-
-.dark-light.active i.sun {
-    opacity: 1;
-    pointer-events: auto;
+.searchToggle.active ~ .search-field{ bottom: -74px; opacity: 1; pointer-events: auto; }
+.search-field::before{
+  content: ''; position: absolute; right: 14px; top: -4px; height: 12px; width: 12px;
+  background-color: var(--nav-color); transform: rotate(-45deg); z-index: -1;
 }
-
-/* Moom */
-.dark-light.active i.moon {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.dark-light i {
-    transition: transform 0.4s ease; /* Smooth rotation transition */
-}
-
-/* Rotate icons when dark mode is active */
-body.dark .dark-light .sun {
-    transform: rotate(360deg);
-}
-
-/* Rotate icons when light mode is active */
-body.dark .dark-light .moon {
-    transform: rotate(360deg);
-}
-
-
-.searchToggle i.cancel {
-    opacity: 0;
-    pointer-events: none;
-}
-
-/* Search Field Styling -- Stripped for now; add later once get it to work */
-.searchBox .search-field {
-    position: absolute;
-    bottom: -85px;
-    right: 5px;
-    height: 50px;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    background-color: var(--nav-color);
-    padding: 3px;
-    border-radius: 6px;
-    box-shadow: var(--shadow);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.searchToggle.active ~ .search-field {
-    bottom: -74px;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.search-field::before {
-    content: '';
-    position: absolute;
-    right: 14px;
-    top: -4px;
-    height: 12px;
-    width: 12px;
-    background-color: var(--nav-color);
-    transform: rotate(-45deg);
-    z-index: -1;
-}
-
-.search-field input {
-    height: 100%;
-    width: 100%;
-    padding: 0 45px 0 15px;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--search-text);
-    background-color: var(--search-bar);
+.search-field input{
+  height: 100%; width: 100%; padding: 0 45px 0 15px;
+  outline: none; border: none; border-radius: 4px; font-size: 14px; font-weight: 400;
+  color: var(--search-text); background-color: var(--search-bar);
 }
 
 /* Mobile Nav SideBar */
-@media (max-width: 790px) {
-    nav .nav-bar .sidebarOpen {
-        display: block;
-    }
-        .dark-light {
-        margin-top: 10px;
-    }
-
-    .menu {
-        position: fixed;
-        height: 100%;
-        width: 320px;
-        left: -100%;
-        top: 0;
-        padding: 20px;
-        background-color: var(--side-nav);
-        z-index: 100;
-        transition: all 0.4s ease;
-    }
-
-    nav.active .menu {
-        left: 0%;
-    }
-
-    nav.active .nav-bar .navLogo a {
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .menu .logo-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo-toggle .sidebarClose {
-        color: var(--text-color);
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-bar .nav-links {
-        flex-direction: column;
-        padding-top: 30px;
-    }
-
-    .nav-links li a {
-        display: block;
-        margin-top: 15px;
-    }
+@media (max-width: 790px){
+  nav .nav-bar .sidebarOpen{ display: block; }
+  .dark-light{ margin-top: 10px; }
+  .menu{
+    position: fixed; height: 100%; width: 320px; left: -100%; top: 0; padding: 20px;
+    background-color: var(--side-nav); z-index: 100; transition: all 0.4s ease;
+  }
+  nav.active .menu{ left: 0%; }
+  nav.active .nav-bar .navLogo a{ opacity: 0; transition: all 0.3s ease; }
+  .menu .logo-toggle{ display: flex; align-items: center; justify-content: space-between; }
+  .logo-toggle .sidebarClose{ color: var(--text-color); font-size: 24px; cursor: pointer; }
+  .nav-bar .nav-links{ flex-direction: column; padding-top: 30px; }
+  .nav-links li a{ display: block; margin-top: 15px; }
 }
 
 /* Hero Section Button */
-.button {
-    top: 50%;
-    background-color: rgb(115, 140, 123);
-    font-weight: bold;
-    border-radius: 15px;
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 18px;
+.button{
+  top: 50%;
+  background-color: rgb(115, 140, 123);
+  font-weight: bold; border-radius: 15px;
+  display: block; margin: 20px auto; padding: 10px 20px;
+  text-align: center; font-size: 18px;
+}
+.button:hover{
+  background-color: rgb(174, 189, 178); transition: 0.7s; border-radius: 15px; cursor: pointer;
 }
 
-.button:hover {
-    background-color: rgb(174, 189, 178);
-    transition: 0.7s;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-/* Image Styling */
-img {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-}
-
-/* About Section */
-.about {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    max-width: 600px;
-    margin: 30px auto;
-}
-
-
-.about-me {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.about h3 {
-  font-size: 1.6rem;
-  font-weight: 500;
-  max-width: 1000px;
-  margin: 0 auto 2rem;
-}
-
-.tech-icons {
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.tech-icons i {
-  font-size: 3.5rem;
-  color: inherit;
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease;
-  cursor: default;
-}
-
-.tech-icons i:hover {
-  transform: scale(1.2);
-}
-
-.tech-icon span {
-  margin-top: 0.3rem;
-  font-size: 1rem;
-}
-
-.icon-group {
+/* Center the hero content (including the typewriter line) */
+.hero-section{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80px;
-  text-align: center;
+  align-items: center;   /* horizontal center */
+  justify-content: center;
+  text-align: center;    /* center inline text/spans */
+  gap: 12px;
 }
 
-.icon-group img {
-  width: 50px;
-  height: 50px;
+/* Make the typewriter span behave like a block so it centers cleanly */
+.hero-section #typewriter,
+.hero-section .typewriter{
   display: block;
   margin: 0 auto;
 }
 
-.icon-group p {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+@media (max-width: 640px){
+  .hero-section #typewriter { font-size: 1.4rem; }
+}
+
+
+/* Global Image Defaults */
+img{
+  display: block; margin: auto; max-width: 100%; height: auto;
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+/* === About Section === */
+.about{
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  width: 70%; max-width: 600px; margin: 30px auto;
+}
+.about-me{ text-align: center; padding: 2rem 1rem; }
+.about h3{
+  font-size: 1.6rem; font-weight: 500; max-width: 1000px; margin: 0 auto 2rem;
+}
+
+.about-blurb {
+  max-width: 900px;
+  margin: 0.75rem auto 1.25rem;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.6;
+  /* scales from ~17px on mobile up to ~21–22px on desktop */
+  font-size: clamp(1.6rem, 0.95rem + 0.4vw, 1.35rem);
+  color: #0f172a;
+  font-weight: 600;
+}
+body.dark .about-blurb {
   color: var(--text-color);
-}
-
-.icon-row {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  opacity: 0.95;
 }
 
 
+.tech-icons{
+  display: flex; align-items: center; font-size: 1rem; justify-content: center;
+  flex-wrap: wrap; gap: 2rem; margin-top: 2rem;
+}
+.tech-icons i{
+  font-size: 3.5rem; color: inherit; margin-bottom: 0.5rem; transition: transform 0.3s ease; cursor: default;
+}
+.tech-icons i:hover{ transform: scale(1.2); }
+.tech-icon span{ margin-top: 0.3rem; font-size: 1rem; }
+.icon-group{
+  display: flex; flex-direction: column; align-items: center; width: 80px; text-align: center;
+}
+
+.icon-group img{ width: 50px; height: 50px; display: block; margin: 0 auto; }
+.icon-group p{
+  margin-top: 0.5rem; font-size: 0.9rem; text-align: center; line-height: 1.2; color: var(--text-color);
+}
+.icon-row{ display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-bottom: 1rem; }
+
+/* Scale tech icons on larger screens */
+@media screen and (min-width: 768px){
+  .icon-group img{ width: 60px; height: 60px; }
+  .icon-group p{ font-size: 1rem; }
+}
+
+/* Add to App.css to gain space between About Me and Projects sections*/
+#about-section {
+  margin-bottom: 45px;   /* tweak: 16–64px */
+}
+
+/* === Projects Section (equal heights + 16:9 images) === */
 /* Projects Container */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; /* vertical spacing between projects on small screens */
-    padding: 0 10px;
-}
-
-@media screen and (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        flex-wrap: wrap; /* wrap if needed */
-        justify-content: center;
-        gap: 30px; /* spacing between projects */
-    }
-    
-    .icon-group img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .icon-group p {
-    font-size: 1rem;
-  }
-}
-
-/* Each Project Column */
-.column {
-    flex: 1 1 300px; 
-    max-width: 350px; 
-    box-sizing: border-box;
-}
-
-/* Individual Project Items with Background Colors */
-.item1 h3, .item2 h3, .item3 h3 {
-    font-size: 1.5rem;
-    margin: 5px 0;
-}
-
-.item1 {
-    background-color: rgb(115, 140, 123);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.item2 {
-    background-color: rgb(115, 120, 140);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.item3 {
-    background-color: rgb(140, 115, 132);
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Project Images */
-.item1 img, .item2 img, .item3 img {
-    width: 100%;
-    height: auto;        /* keep aspect ratio */
-    border-radius: 10px;
-    object-fit: cover;  
-    margin-bottom: 10px;
-}
-
-/* Project Buttons */
-.projbutton {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: bold;
-    background-color: rgb(140, 135, 115);
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    border: none;
-    font-size: 16px;
-}
-
-.projbutton:hover {
-    background-color: rgb(192, 189, 178);
-}
-
-/* Contact Form */
-.contact-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 85%;
-    margin: 100px auto;
-}
-
-form {
-    width: 40%;
-    margin: auto;
-}
-
-form h2 {
-    font-size: 40px;
-    margin-bottom: 25px;
-}
-
-.contact-form label {
-    font-size: 25px;
-    font-weight: 500;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 14px;
-    margin-bottom: 15px;
-    outline: none;
-    border-radius: 10px;
-    border: 1px solid rgb(204, 204, 204);
-    transition: 0.4s ease;
-    box-shadow: var(--shadow);
-    font-size: 17px;
-    height: 45px;
-}
-
-.contact-form input:hover,
-.contact-form textarea:hover {
-    border: 1px solid rgb(54, 214, 109);
-}
-
-/* Contact Form Submit Button */
-.submitbutton {
-    background-color: rgb(115, 140, 123);
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    font-size: 17px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    top: 50%;
-    margin: auto;
-    text-align: center;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-}
-
-.submitbutton:hover {
-    background-color: rgb(174, 189, 178);
-    transition: 0.7s;
-}
-
-/* Contact Content */
-.contact-content {
-    width: 40%;
-    line-height: 1.5;
-}
-
-.contact-content h2 {
-    color: rgb(255, 255, 255);
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.contact-content p {
-    color: rgb(190, 212, 133);
-    font-size: 16px;
-}
-
-
-/* Contact Form Thank You */
-.thank-you-icon {
-  font-size: 3rem;
-  color: var(--text-color); /* adjusts for light/dark mode */
-  margin-bottom: 10px;
-}
-
-/* Animates Thank you icon */
-.thank-you-icon {
-  font-size: 3rem;
-  color: var(--text-color);
-  margin-bottom: 10px;
-  animation: popIn 0.8s ease forwards;
-}
-
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-/* Thank you message */
-.thank-you {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  min-height: 230px; /* Adjust based on how much space you want */
-  width: 25%;
+  align-items: stretch;         /* stretch children to equal height */
+  gap: 20px;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;       /* keep equal heights on larger screens */
+    gap: 30px;
+  }
+}
+
+/* Columns (cards) */
+.column {
+  flex: 1 1 300px;
+  max-width: 350px;
+  box-sizing: border-box;
+  display: flex;                /* let the card fill the column */
+}
+
+/* Card titles */
+.item1 h3, .item2 h3, .item3 h3{
+  font-size: 1.5rem; margin: 5px 0;
+}
+
+/* Individual cards – FLEX to keep CTAs at bottom and equal heights */
+.item1, .item2, .item3{
+  padding: 15px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;                      /* fill the column height */
+  min-height: 100%;
+}
+.item1{ background-color: rgb(115, 140, 123); }
+.item2{ background-color: rgb(115, 120, 140); }
+.item3{ background-color: rgb(140, 115, 132); }
+
+/* Project Images: consistent 16:9, crisp */
+.item1 img, .item2 img, .item3 img{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  outline: 1px solid rgba(0,0,0,.08);
+}
+
+/* Project description: clamp to 3 lines and grow to push button down */
+.column p{
+  margin: 6px 0 0;
+  color: #0f172a;
+  flex-grow: 1;                 /* take remaining space so button sits at bottom */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* NEW: center and strengthen the description text */
   text-align: center;
-  animation: fadeIn 0.6s ease-in-out;
-  /* Make look like glass card */
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 40px;
+  font-weight: 600;
+  line-height: 1.55;
 }
 
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* NEW: dark-mode color for description text */
+body.dark .container .column p{
+  color: #e5e7eb;
 }
 
-
-
-
-/* Fix toggle to top-right corner */
-.dark-light-toggle-fixed {
-  position: absolute;
-  top: 20px;
-  right: 55px;
-  z-index: 1100;
-}
-
-.dark-light-toggle-fixed i {
-  font-size: 25px;
-  color: var(--text-color);
+/* Project Buttons */
+.projbutton{
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  background: var(--btn);
+  color: var(--btn-text);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+  font-size: 16px;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(2,6,23,.12);
+  transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.projbutton:hover{
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(2,6,23,.18);
+}
+.projbutton:focus-visible{
+  outline: 3px solid transparent;
+  box-shadow: 0 0 0 4px var(--ring), 0 4px 12px rgba(2,6,23,.18);
 }
 
-/* Responsive Contact */
-@media screen and (max-width: 768px) {
-    .contact-form {
-        width: 85%;
-        margin: 50px auto;
-        flex-direction: column;
-    }
-
-     form {
-        width: 100%;
-    }
-
-    .contact-content {
-        width: 100%;
-        margin-top: 25px;
-    }
+/* Optional outline variant */
+.projbutton.outline{
+  background: transparent; color: #0F172A; border: 1.5px solid #0F172A;
+}
+.projbutton.outline:hover{
+  background: #0F172A; color: #fff;
 }
 
+/* Contact Form */
+.contact-form{
+  display: flex; justify-content: center; align-items: center; width: 85%;
+  margin: 100px auto;
+}
+form{ width: 40%; margin: auto; }
+form h2{ font-size: 40px; margin-bottom: 25px; }
 
+.contact-form label{ font-size: 25px; font-weight: 500; }
+.contact-form input, .contact-form textarea{
+  width: 100%; padding: 14px; margin-bottom: 15px; outline: none;
+  border-radius: 10px; border: 1px solid rgb(204, 204, 204); transition: 0.4s ease;
+  box-shadow: var(--shadow); font-size: 17px; height: 45px;
+}
+.contact-form input:hover, .contact-form textarea:hover{ border: 1px solid rgb(54, 214, 109); }
 
-/* Social Media */
-.social-media {
-    text-align: center;
-    font-size: 2rem;
+/* Contact Form Submit Button */
+.submitbutton{
+  background-color: rgb(115, 140, 123); color: rgb(0, 0, 0); font-weight: bold; font-size: 17px;
+  padding: 10px 20px; border: none; border-radius: 15px; top: 50%; margin: auto; text-align: center;
+  box-shadow: var(--shadow); cursor: pointer;
+}
+.submitbutton:hover{ background-color: rgb(174, 189, 178); transition: 0.7s; }
+
+/* Contact Content */
+.contact-content{ width: 40%; line-height: 1.5; }
+.contact-content h2{ color: rgb(255, 255, 255); font-size: 32px; margin-bottom: 15px; }
+.contact-content p{ color: rgb(190, 212, 133); font-size: 16px; }
+
+/* Thank You */
+.thank-you-icon{
+  font-size: 3rem; color: var(--text-color); margin-bottom: 10px; animation: popIn 0.8s ease forwards;
+}
+@keyframes popIn{
+  0%{ opacity: 0; transform: scale(0.8); }
+  100%{ opacity: 1; transform: scale(1); }
+}
+.thank-you{
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  min-height: 230px; width: 25%; text-align: center; animation: fadeIn 0.6s ease-in-out;
+  background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
+  border-radius: 15px; padding: 40px;
+}
+@keyframes fadeIn{
+  from{ opacity: 0; transform: translateY(15px); }
+  to{ opacity: 1; transform: translateY(0); }
 }
 
-/* Copyright */
-.copyright {
-    text-align: center;
-}
-
-
-/* Typwriter Effect -- Blinking Cursor */
-#typewriter {
+/* Typewriter shine */
+#typewriter{
   background: linear-gradient(90deg, transparent, rgba(115, 140, 123, 0.3), transparent);
-  background-size: 200% 100%;
-  animation: shine 8s infinite;
-  font-size: 1.8rem; 
+  background-size: 200% 100%; animation: shine 8s infinite; font-size: 1.8rem;
 }
-
-/* Add Shine to TypeWriter Effect words */
-@keyframes shine {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+@keyframes shine{
+  0%{ background-position: 200% 0; }
+  100%{ background-position: -200% 0; }
 }
-
-/* Dark Mode Typewriter Effect words */
-body.dark #typewriter {
+body.dark #typewriter{
   border-color: rgb(190, 212, 133);
   filter: drop-shadow(0 0 1px rgb(190, 212, 133));
 }
 
 /* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+html{ scroll-behavior: smooth; }
+
+.avatar{ width: 40rem; height: auto; }
+
+/* Fix toggle to top-right corner */
+.dark-light-toggle-fixed{
+  position: absolute; top: 20px; right: 55px; z-index: 1100;
+}
+.dark-light-toggle-fixed i{ font-size: 25px; color: var(--text-color); cursor: pointer; }
+
+/* Responsive Contact */
+@media screen and (max-width: 768px){
+  .contact-form{ width: 85%; margin: 50px auto; flex-direction: column; }
+  form{ width: 100%; }
+  .contact-content{ width: 100%; margin-top: 25px; }
 }
 
+/* Social Media (legacy) */
+.social-media{ text-align: center; font-size: 2rem; }
 
+/* Copyright (legacy) */
+.copyright{ text-align: center; }
 
-
-
-.avatar{
-    width: 40rem;
-    height: auto;
+/* === Stacked Footer (icons → NPower → copyright) === */
+footer .footer{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 18px 16px 28px;
+  display: flex;
+  flex-direction: column;        /* stack rows */
+  align-items: center;
+  gap: 12px;
 }
 
-
-
-
-
-
-/* === Responsive Typography (Mobile-First with min-width) === */
-
-/* Default: Small screens (mobile first) */
-h1, h2, h3 {
-  font-size: 1.6rem;
+footer .footer-row{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button,
-.projbutton,
-.submitbutton {
-  font-size: 1rem;
+/* Row 1 — social/contact icons */
+footer .footer-row.social{ gap: 12px; }
+
+footer .icon-link{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  background: rgba(2,6,23,.06);
+  border: 1px solid rgba(2,6,23,.10);
+  color: inherit;
+  text-decoration: none;
+  transition: transform .15s ease, background-color .2s ease;
+}
+footer .icon-link:hover{ background: rgba(2,6,23,.10); transform: translateY(-2px); }
+footer .icon-link i{ font-size: 1.25rem; }
+
+/* Row 2 — NPower badge (clickable hotlink) */
+footer .badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(2,6,23,.06);
+  border: 1px solid rgba(2,6,23,.10);
+  color: #475569;
+  font-weight: 600;
+  text-decoration: none;
+}
+footer .badge:hover{ background: rgba(2,6,23,.10); color: #0f172a; }
+footer .badge:focus-visible{
+  outline: 3px solid transparent;
+  box-shadow: 0 0 0 4px var(--ring, rgba(2,6,23,.12));
 }
 
-/* Slightly larger screens (e.g. tablets) */
-@media screen and (min-width: 480px) {
-  h1, h2, h3 {
-    font-size: 1.8rem;
-  }
+/* NPower logo sizing inside the badge */
+footer .badge.npower .npower-logo{
+  height: 18px;
+  width: auto;
+  display: block;
 
-  .button,
-  .projbutton,
-  .submitbutton {
-    font-size: 1.1rem;
-  }
+  /* kill any inherited effects from global img rules */
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
-/* Medium screens (landscape tablets and small laptops) */
-@media screen and (min-width: 768px) {
-  h1, h2, h3 {
-    font-size: 2.1rem;
-  }
-
-  .button,
-  .projbutton,
-  .submitbutton {
-    font-size: 1.15rem;
-  }
+/* Remove pill border for the NPower row (optional) */
+footer .badge.npower{
+  border: 0;
+  background: rgba(2,6,23,.06);
+  display: inline-flex;
+  align-items: baseline;     /* align to text baseline */
+  gap: 10px;
+}
+footer .badge.npower span{
+  line-height: 1;
+}
+footer .badge.npower .npower-logo{
+  height: 15px;              /* size to taste */
+  transform: translateY(var(--npower-nudge));
 }
 
-/* Larger screens (desktops) */
-@media screen and (min-width: 1024px) {
-  h1, h2, h3 {
-    font-size: 2.4rem;
-  }
-
-  .button,
-  .projbutton,
-  .submitbutton {
-    font-size: 1.2rem;
-  }
+/* Dark mode: NPower badge — make text white, subtle pill */
+body.dark footer .badge,
+body.dark footer .badge span {
+  color: #fff;
 }
 
+body.dark footer .badge {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.16);
+}
+
+body.dark footer .badge:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+/* Row 3 — copyright */
+footer .footer-row.copyright{
+  text-align: center;
+  color: inherit;
+}
+
+/* === Responsive Typography (mobile-first) === */
+h1, h2, h3{ font-size: 1.6rem; }
+.button, .projbutton, .submitbutton{ font-size: 1rem; }
+
+@media screen and (min-width: 480px){
+  h1, h2, h3{ font-size: 1.8rem; }
+  .button, .projbutton, .submitbutton{ font-size: 1.1rem; }
+}
+@media screen and (min-width: 768px){
+  h1, h2, h3{ font-size: 2.1rem; }
+  .button, .projbutton, .submitbutton{ font-size: 1.15rem; }
+}
+@media screen and (min-width: 1024px){
+  h1, h2, h3{ font-size: 2.4rem; }
+  .button, .projbutton, .submitbutton{ font-size: 1.2rem; }
+}
+
+/* === Filter chips (polished to match theme) === */
+.filters{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0 20px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(2,6,23,.15);
+  background: rgba(255,255,255,0.8);
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+
+.chip:hover{
+  background: rgba(255,255,255,1);
+  transform: translateY(-1px);
+}
+
+.chip:focus-visible{
+  outline: 3px solid transparent;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.chip.active{
+  background: var(--btn);
+  color: var(--btn-text);
+  border-color: rgba(255,255,255,.2);
+  box-shadow: 0 4px 10px rgba(2,6,23,.15);
+}
+
+/* Dark mode refinements for chips */
+body.dark .chip{
+  background: rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  border-color: rgba(255,255,255,0.12);
+}
+body.dark .chip:hover{
+  background: rgba(255,255,255,0.14);
+}
+body.dark .chip.active{
+  background: var(--btn);
+  color: var(--btn-text);
+}
+
+.skills-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 18px 22px; place-items: center; }
+.skill { display: flex; flex-direction: column; align-items: center; min-width: 90px; text-align: center; }
+
+
+/* Logo */
+.navLogo svg { vertical-align: middle; }
+body.dark .navLogo svg { filter: drop-shadow(0 0 0 transparent); } /* stays crisp in dark mode */
 
 
 
+/* --- Anchor offset so fixed navbar doesn't cover section tops --- */
+:root{
+  /* nav is 65px; add ~20px breathing room */
+  --anchor-offset: 75px;
+}
 
+/* Smooth scroll is already there; add padding hint (helps some browsers) */
+html{
+  scroll-padding-top: var(--anchor-offset);
+}
 
+/* Apply an offset when the page jumps to these sections */
+#home,
+#hero-section,
+#about-section,
+#projects-section,
+#contact-form{
+  scroll-margin-top: var(--anchor-offset);
+}
 
-
+/* Safari/iOS fallback: when the hash targets these, insert a hidden spacer */
+#home:target::before,
+#hero-section:target::before,
+#about-section:target::before,
+#projects-section:target::before,
+#contact-form:target::before{
+  content: "";
+  display: block;
+  height: var(--anchor-offset);
+  margin-top: calc(-1 * var(--anchor-offset));
+  visibility: hidden;
+}
