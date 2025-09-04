@@ -1,13 +1,12 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react';
-import DarkLightToggle from './components/DarkLightToggle';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import BubbleCursorEffect from './components/BubbleCursorEffect';
+import Cursor from './components/Cursor';
 
 import 'boxicons/css/boxicons.min.css';
 import './App.css';
@@ -23,7 +22,7 @@ function App() {
   }, [darkMode]);
 
   return (
-    <main>
+    <main id="top">
       <section id="home">
         <NavBar />
       </section>
@@ -46,10 +45,9 @@ function App() {
 
       <Footer />
 
-      {/* Initialize the bubble cursor effect */}
-      <BubbleCursorEffect />
     </main>
   );
 }
 
 export default App;
+
